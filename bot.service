@@ -1,0 +1,15 @@
+[Unit]
+Description=Lichess Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/usr/bin/python3 /home/ubuntu/lichess-bot/lichess-bot.py
+WorkingDirectory=/home/ubuntu/lichess-bot/
+User=ubuntu
+Group=ubuntu
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

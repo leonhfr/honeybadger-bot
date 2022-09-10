@@ -56,9 +56,20 @@ sed -i "1 s/xxxxxxxxxxxxxxxx/$1/" "$DIR_BOT/config.yml"
 p_success "Configuration file copied."
 
 # downloading latest honey badger binary
+p_header "- Downloading latest honeybadger binary"
 cd "$DIR_BOT/engines"
 curl -s https://api.github.com/repos/leonhfr/honeybadger/releases/latest \
   | jq -r '.assets[] | select(.name | contains("Linux_arm64")) | .browser_download_url' \
-  | xargs -I % curl % --output honeybadger.tar.gz
+  | xargs -I % curl -L % > honeybadger.tar.gz
 tar -xvwf honeybadger.tar.gz
 rm honeybadger.tar.gz
+p_success "Latest honeybadger binary downloaded."
+
+# setting up the bot service
+p_header "- Setting up the bot service"
+cp "$DIR_HONEYBADGER/bot.service" "/lib/systemd/system/"
+chmod 644 /lib/systemd/system/bot.service
+systemctl daemon-reload
+systemctl enable bot.service
+systemctl start bot.service
+p_success "Bot service set up."
