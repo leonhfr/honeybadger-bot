@@ -61,7 +61,7 @@ cd "$DIR_BOT/engines"
 curl -s https://api.github.com/repos/leonhfr/honeybadger/releases/latest \
   | jq -r '.assets[] | select(.name | contains("Linux_arm64")) | .browser_download_url' \
   | xargs -I % curl -L % > honeybadger.tar.gz
-tar -xvwf honeybadger.tar.gz
+tar -xvvf honeybadger.tar.gz
 rm honeybadger.tar.gz
 p_success "Latest honeybadger binary downloaded."
 
