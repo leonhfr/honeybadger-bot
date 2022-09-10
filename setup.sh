@@ -1,5 +1,6 @@
 #!/bin/bash
 
+HOME="/home/ubuntu"
 DIR_HONEYBADGER="$HOME/honeybadger-bot"
 DIR_BOT="$HOME/lichess-bot"
 DIR_GH="$HOME/actions-runner"
