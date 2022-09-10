@@ -47,5 +47,5 @@ p_success "Python dependencies installed."
 # copying config.yml
 p_header "- Copying configuration file"
 cp "$DIR_HONEYBADGER/config.yml" "$DIR_BOT/config.yml"
-sed "1 s/xxxxxxxxxxxxxxxx/$1/" "$DIR_BOT/config.yml"
+sed -i "1 s/xxxxxxxxxxxxxxxx/$1/" "$DIR_BOT/config.yml"
 p_success "Configuration file copied."
