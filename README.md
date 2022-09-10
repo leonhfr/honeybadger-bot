@@ -14,8 +14,8 @@ cd ~
 # Clone this repository
 git clone https://github.com/leonhfr/honeybadger-bot.git
 cd honeybadger-bot
-# Running with sudo to install dependencies
-sudo ./setup.sh
+# Running with sudo to install dependencies, the argument is the lichess token
+sudo ./setup.sh lip_651p**************io
 ```
 
 <!--

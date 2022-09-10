@@ -4,6 +4,7 @@ HOME="/home/ubuntu"
 DIR_HONEYBADGER="$HOME/honeybadger-bot"
 DIR_BOT="$HOME/lichess-bot"
 DIR_GH="$HOME/actions-runner"
+LICHESS_TOKEN=$1
 
 source "$DIR_HONEYBADGER/lib/utils.sh"
 
@@ -42,3 +43,9 @@ p_success "virtualenv set up."
 p_header "- Installing Python dependencies"
 python3 -m pip install -r requirements.txt
 p_success "Python dependencies installed."
+
+# copying config.yml
+p_header "- Copying configuration file"
+cp "$DIR_HONEYBADGER/config.yml" "$DIR_BOT/config.yml"
+sed "1 s/xxxxxxxxxxxxxxxx/$1/" "$DIR_BOT/config.yml"
+p_success "Configuration file copied."
