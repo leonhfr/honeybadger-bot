@@ -33,4 +33,12 @@ p_success "virtualenv installed."
 # setup virtualenv
 p_header "- Setting up virtualenv"
 apt install python3-venv
+python3 -m venv venv
+virtualenv venv -p python3
+source ./venv/bin/activate
 p_success "virtualenv set up."
+
+# install Python dependencies
+p_header "- Installing Python dependencies"
+python3 -m pip install -r requirements.txt
+p_success "Python dependencies installed."
