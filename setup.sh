@@ -4,7 +4,7 @@ DIR_HONEYBADGER="$HOME/honeybadger-bot"
 DIR_BOT="$HOME/lichess-bot"
 DIR_GH="$HOME/actions-runner"
 
-source ./lib/utils.sh
+source "$DIR_HONEYBADGER/lib/utils.sh"
 
 cd $HOME
 
