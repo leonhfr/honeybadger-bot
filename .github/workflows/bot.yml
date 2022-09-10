@@ -16,5 +16,15 @@ jobs:
           curl -s https://api.github.com/repos/leonhfr/honeybadger/releases/latest \
             | jq -r '.assets[] | select(.name | contains("Linux_arm64")) | .browser_download_url' \
             | xargs -I % curl -L % > honeybadger.tar.gz
+
+      - name: Stopping bot service
+        run: sudo systemctl stop bot.service
+
+      - name: Replace engine binary
+        run: |
+          cd /home/ubuntu/lichess-bot/engines_test
           tar -xvvf honeybadger.tar.gz
           rm honeybadger.tar.gz
+
+      - name: Starting bot service
+        run: sudo systemctl start bot.service

@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Environment="PYTHONUNBUFFERED=1"
-ExecStart=/usr/bin/python3 /home/ubuntu/lichess-bot/lichess-bot.py
+ExecStart=/home/ubuntu/lichess-bot/.venv/bin/python3 /home/ubuntu/lichess-bot/lichess-bot.py
 WorkingDirectory=/home/ubuntu/lichess-bot/
 User=ubuntu
 Group=ubuntu
