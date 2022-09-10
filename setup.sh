@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DIR_HONEYBADGER="$HOME/honeybadger-bot"
 DIR_BOT="$HOME/lichess-bot"
