@@ -21,6 +21,11 @@ fi
 
 cd $DIR_BOT
 
+# jq
+p_header "- Installing jq"
+apt install jq --yes
+p_success "jq installed."
+
 # Python
 p_header "- Installing Python 3"
 apt install python3-pip --yes
@@ -49,3 +54,11 @@ p_header "- Copying configuration file"
 cp "$DIR_HONEYBADGER/config.yml" "$DIR_BOT/config.yml"
 sed -i "1 s/xxxxxxxxxxxxxxxx/$1/" "$DIR_BOT/config.yml"
 p_success "Configuration file copied."
+
+# downloading latest honey badger binary
+DOWNLOAD=$(
+  curl -s https://api.github.com/repos/leonhfr/honeybadger/releases/latest
+   | jq -r '.assets[] | select(.name | contains("Linux_arm64"))
+   | .browser_download_url'
+)
+wget -P "$DIR_BOT/engines" "$DOWNLOAD"
