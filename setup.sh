@@ -6,6 +6,23 @@ DIR_BOT="$HOME/lichess-bot"
 DIR_GH="$HOME/actions-runner"
 LICHESS_TOKEN=$1
 
+# utils
+p_header() {
+    printf "\n$(tput setaf 7)%s$(tput sgr0)\n" "$@"
+}
+
+p_log() {
+    printf "$(tput setaf 7)%s$(tput sgr0)\n" "$@"
+}
+
+p_success() {
+    printf "$(tput setaf 64)✓ %s$(tput sgr0)\n" "$@"
+}
+
+p_warn() {
+    printf "$(tput setaf 136)! %s$(tput sgr0)\n" "$@"
+}
+
 source "$DIR_HONEYBADGER/lib/utils.sh"
 
 cd $HOME
@@ -41,7 +58,6 @@ p_header "- Setting up virtualenv"
 apt install python3-venv
 python3 -m venv venv
 virtualenv venv -p python3
-source ./venv/bin/activate
 p_success "virtualenv set up."
 
 # install Python dependencies
@@ -64,6 +80,15 @@ curl -s https://api.github.com/repos/leonhfr/honeybadger/releases/latest \
 tar -xvvf honeybadger.tar.gz
 rm honeybadger.tar.gz
 p_success "Latest honeybadger binary downloaded."
+
+# setting up the github actions runner service
+p_header "- Setting up the Github Actions runner service"
+cp "$DIR_HONEYBADGER/github.service" "/lib/systemd/system/"
+chmod 644 /lib/systemd/system/github.service
+systemctl daemon-reload
+systemctl enable github.service
+systemctl start github.service
+p_success "Hithub Actions runner service set up."
 
 # setting up the bot service
 p_header "- Setting up the bot service"
