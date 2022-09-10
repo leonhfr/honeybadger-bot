@@ -8,11 +8,7 @@ LICHESS_TOKEN=$1
 
 # utils
 p_header() {
-    printf "\n$(tput setaf 7)%s$(tput sgr0)\n" "$@"
-}
-
-p_log() {
-    printf "$(tput setaf 7)%s$(tput sgr0)\n" "$@"
+    printf "\n$(tput setaf 267)%s$(tput sgr0)\n" "$@"
 }
 
 p_success() {
@@ -30,7 +26,7 @@ cd $HOME
 # lichess bot repository
 p_header "- Cloning repository"
 if [ -d $DIR_BOT ]; then
-  p_log "- Lichess bot repository already cloned, skipping..."
+  p_success "- Lichess bot repository already cloned, skipping..."
 else
   git clone https://github.com/ShailChoksi/lichess-bot.git $DIR_BOT
   p_success "Cloned repository."
@@ -88,7 +84,7 @@ chmod 644 /lib/systemd/system/github.service
 systemctl daemon-reload
 systemctl enable github.service
 systemctl start github.service
-p_success "Hithub Actions runner service set up."
+p_success "Github Actions runner service set up."
 
 # setting up the bot service
 p_header "- Setting up the bot service"
