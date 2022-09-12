@@ -4,8 +4,6 @@ name: Deploy to Raspberry Pi
 # Those with write access can potentially execute code and compromise the runner
 # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#hardening-for-self-hosted-runners
 on:
-  push:
-    branches: [ master ]
   # Allows the workflow to be run manually and to be triggered by another repository
   workflow_dispatch:
 

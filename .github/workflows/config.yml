@@ -1,0 +1,45 @@
+name: Update bot configuration
+
+# Be very careful with self-hosted runners and public repositories
+# Those with write access can potentially execute code and compromise the runner
+# https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#hardening-for-self-hosted-runners
+on:
+  # Allows the workflow to be run manually and to be triggered by another repository
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+
+jobs:
+  changes:
+    runs-on: self-hosted
+    outputs:
+      config: ${{ steps.filter.outputs.config }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Filter paths
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            config:
+            - 'config.yml'
+
+  deploy:
+    needs: changes
+    if: needs.changes.outputs.config == 'true'
+    runs-on: self-hosted
+
+    steps:
+      - name: Stopping bot service
+        run: sudo systemctl stop bot.service
+
+      - name: Replace and update configuration file
+        run: |
+          cp /home/ubuntu/honeybadger-bot/config.yml /home/ubuntu/lichess-bot/config.yml
+          sed -i "1 s/xxxxxxxxxxxxxxxx/${{ secrets.LICHESS_TOKEN }}/" /home/ubuntu/lichess-bot/config.yml
+
+      - name: Starting bot service
+        run: sudo systemctl start bot.service
