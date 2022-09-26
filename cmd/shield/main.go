@@ -37,7 +37,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 		return &events.APIGatewayProxyResponse{
 			StatusCode: 500,
 			Body:       string(s),
-		}, err
+		}, nil
 	}
 
 	s, _ := json.Marshal(shield(false, status.Online, status.Playing))
