@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	lichessBotID = "LICHESS_BOT"
+	lichessBotID = "LICHESS_ID"
 
 	schemaVersion   = 1
 	lichessBotLabel = "lichess bot"

@@ -11,7 +11,7 @@ netlify:
 	go install ./...
 
 test:
-	LICHESS_BOT=honeybadger-bot go test ./... -v
+	LICHESS_ID=honeybadger-bot go test ./... -v
 
 clean:
 	rm -f functions/*
