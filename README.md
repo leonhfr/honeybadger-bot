@@ -36,5 +36,3 @@ sudo journalctl -f -u bot.service
 # Lichess bot shield
 
 The lichess bot shield uses a netlify function.
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/leonhfr/honeybadger-bot)
