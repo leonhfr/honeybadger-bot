@@ -36,3 +36,5 @@ sudo journalctl -f -u bot.service
 # Lichess bot shield
 
 The lichess bot shield uses a netlify function.
+
+[![](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fpeppy-khapse-155e06.netlify.app%2F.netlify%2Ffunctions%2Fshield)](https://lichess.org/?user=honeybadger-bot#friend)
