@@ -11,7 +11,7 @@ on:
 
 jobs:
   changes:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     outputs:
       config: ${{ steps.filter.outputs.config }}
 
