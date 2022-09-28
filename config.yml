@@ -36,7 +36,7 @@ engine:
     SearchStrategy: AlphaBeta
     EvaluationStrategy: Pesto
     OracleStrategy: Order
-    QuiescenceStrategy: AlphaBeta
+    QuiescenceStrategy: None
     TranspositionStrategy: Ristretto
     OpeningStrategy: WeightedRandom
     Hash: 256
