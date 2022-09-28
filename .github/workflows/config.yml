@@ -28,7 +28,7 @@ jobs:
   #           - 'config.yml'
 
   deploy:
-    needs: changes
+    # needs: changes
     if: needs.changes.outputs.config == 'true'
     runs-on: self-hosted
 
