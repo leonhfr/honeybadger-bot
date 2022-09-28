@@ -47,3 +47,11 @@ ssh ubuntu@ip
 The lichess bot shield uses a netlify function.
 
 [![](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fpeppy-khapse-155e06.netlify.app%2F.netlify%2Ffunctions%2Fshield)](https://lichess.org/?user=honeybadger-bot#friend)
+
+## Rating graph
+
+The rating graph is generated daily using a Python script and Github actions.
+
+(Currently displaying the graph of turkjs instead oh honeybadger-bot as this one doesn't have enough data points yet)
+
+![](https://raw.githubusercontent.com/leonhfr/honeybadger-bot/output/rating-graph.png)
