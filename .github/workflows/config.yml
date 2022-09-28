@@ -38,8 +38,8 @@ jobs:
 
       - name: Replace and update configuration file
         run: |
-          cp /home/ubuntu/honeybadger-bot/config.yml /home/ubuntu/lichess-bot/config.yml
-          sed -i "1 s/xxxxxxxxxxxxxxxx/${{ secrets.LICHESS_TOKEN }}/" /home/ubuntu/lichess-bot/config.yml
+          sudo cp /home/ubuntu/honeybadger-bot/config.yml /home/ubuntu/lichess-bot/config.yml
+          sudo sed -i "1 s/xxxxxxxxxxxxxxxx/${{ secrets.LICHESS_TOKEN }}/" /home/ubuntu/lichess-bot/config.yml
 
       - name: Starting bot service
         run: sudo systemctl start bot.service

@@ -24,9 +24,9 @@ jobs:
 
       - name: Replace engine binary
         run: |
-          cd /home/ubuntu/lichess-bot/engines
-          tar -xvvf honeybadger.tar.gz
-          rm honeybadger.tar.gz
+          sudo cd /home/ubuntu/lichess-bot/engines
+          sudo tar -xvvf honeybadger.tar.gz
+          sudo rm honeybadger.tar.gz
 
       - name: Starting bot service
         run: sudo systemctl start bot.service
