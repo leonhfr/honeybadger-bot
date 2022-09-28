@@ -22,8 +22,6 @@ for variant in json:
   for record in variant['points']:
     records.append((name, record[0], record[1], record[2], record[3]))
 
-print(records)
-
 df = pd.DataFrame.from_records(np.array(records,
   dtype=[('variant','U32'),('year','u4'),('month','u4'),('day','u4'),('rating','u4')]))
 
@@ -34,7 +32,5 @@ df['date'] = pd.to_datetime(df[['year','month','day']])
 palette = sns.color_palette("rocket_r")
 sns.set_theme(style="darkgrid")
 sns.relplot(data=df, x='date', y='rating', hue='variant', kind='line', palette=palette, aspect=1.6)
-
-print(output)
 
 plt.savefig(output)
