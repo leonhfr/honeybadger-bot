@@ -10,26 +10,26 @@ on:
     branches: [ master ]
 
 jobs:
-  # changes:
-  #   runs-on: self-hosted
-  #   outputs:
-  #     config: ${{ steps.filter.outputs.config }}
+  changes:
+    runs-on: self-hosted
+    outputs:
+      config: ${{ steps.filter.outputs.config }}
 
-  #   steps:
-  #     - name: Check out repository
-  #       uses: actions/checkout@v3
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-  #     - name: Filter paths
-  #       uses: dorny/paths-filter@v2
-  #       id: filter
-  #       with:
-  #         filters: |
-  #           config:
-  #           - 'config.yml'
+      - name: Filter paths
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            config:
+            - 'config.yml'
 
   deploy:
-    # needs: changes
-    # if: needs.changes.outputs.config == 'true'
+    needs: changes
+    if: needs.changes.outputs.config == 'true'
     runs-on: self-hosted
 
     steps:
