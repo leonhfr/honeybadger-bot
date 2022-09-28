@@ -29,7 +29,7 @@ jobs:
 
   deploy:
     # needs: changes
-    if: needs.changes.outputs.config == 'true'
+    # if: needs.changes.outputs.config == 'true'
     runs-on: self-hosted
 
     steps:
