@@ -33,7 +33,16 @@ sudo systemctl stop bot.service
 sudo journalctl -f -u bot.service
 ```
 
-# Lichess bot shield
+## Other commands
+
+```sh
+# Get IPs
+nmap -sP 192.168.0.0/24
+# Connect ssh
+ssh ubuntu@ip
+```
+
+## Lichess bot shield
 
 The lichess bot shield uses a netlify function.
 
