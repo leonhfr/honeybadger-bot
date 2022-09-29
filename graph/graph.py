@@ -6,7 +6,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 lichessId = os.environ.get("LICHESS_ID")
-output = os.environ.get("OUTPUT")
+darkOutput = os.environ.get("OUTPUT_DARK")
+lightOutput = os.environ.get("OUTPUT_LIGHT")
 
 # Get Lichess rating history
 response = requests.get('https://lichess.org/api/user/' + lichessId + '/rating-history')
@@ -29,8 +30,21 @@ df['month'] = df['month']+1 # months are 0-based in Lichess
 
 df['date'] = pd.to_datetime(df[['year','month','day']])
 
-palette = sns.color_palette("rocket_r")
-sns.set_theme(style="darkgrid")
-sns.relplot(data=df, x='date', y='rating', hue='variant', kind='line', palette=palette, aspect=1.6)
+sns.set_theme(style="ticks", palette=sns.color_palette("rocket_r"))
+sns.relplot(data=df, x='date', y='rating', hue='variant', kind='line', aspect=1.6)
+plt.savefig(lightOutput)
 
-plt.savefig(output)
+
+sns.set(rc={
+  'axes.facecolor':'#0d1117',
+  'axes.edgecolor': '#c9d1d9',
+  'axes.grid': False,
+  'axes.labelcolor': '#c9d1d9',
+  'figure.facecolor':'#0d1117',
+  'grid.color': '#0d1117',
+  'text.color': '#c9d1d9',
+  'xtick.color': '#c9d1d9',
+  'ytick.color': '#c9d1d9',
+}, palette=sns.color_palette("rocket_r"))
+sns.relplot(data=df, x='date', y='rating', hue='variant', kind='line', aspect=1.6)
+plt.savefig(darkOutput)
