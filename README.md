@@ -52,6 +52,4 @@ The lichess bot shield uses a netlify function.
 
 The rating graph is generated daily using a Python script and Github actions.
 
-(Currently displaying the graph of turkjs instead oh honeybadger-bot as this one doesn't have enough data points yet)
-
-![](https://raw.githubusercontent.com/leonhfr/honeybadger-bot/output/rating-graph.png)
+![](https://raw.githubusercontent.com/leonhfr/honeybadger-bot/output/rating-graph-dark.png#gh-dark-mode-only)![](https://raw.githubusercontent.com/leonhfr/honeybadger-bot/output/rating-graph-light.png#gh-light-mode-only)
